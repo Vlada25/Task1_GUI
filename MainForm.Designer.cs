@@ -1,7 +1,7 @@
 ﻿
 namespace Task1_GUI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -131,7 +131,7 @@ namespace Task1_GUI
             this.button1.TabIndex = 15;
             this.button1.Text = "Выполнить";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.DoBtnClick);
             // 
             // card11
             // 
@@ -433,9 +433,9 @@ namespace Task1_GUI
             this.button2.TabIndex = 47;
             this.button2.Text = "Очистить";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ClearBtnClick);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -463,8 +463,8 @@ namespace Task1_GUI
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "7 Red";
             this.card11.ResumeLayout(false);
             this.card11.PerformLayout();
             this.card12.ResumeLayout(false);
