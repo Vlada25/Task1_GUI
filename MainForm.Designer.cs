@@ -1,7 +1,7 @@
 ﻿
 namespace Task1_GUI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -33,7 +33,7 @@ namespace Task1_GUI
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.do_btn = new System.Windows.Forms.Button();
             this.card11 = new System.Windows.Forms.Panel();
             this.c11 = new System.Windows.Forms.Label();
             this.card12 = new System.Windows.Forms.Panel();
@@ -66,7 +66,7 @@ namespace Task1_GUI
             this.label4 = new System.Windows.Forms.Label();
             this.resCard = new System.Windows.Forms.Panel();
             this.resC = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.clear_btn = new System.Windows.Forms.Button();
             this.card11.SuspendLayout();
             this.card12.SuspendLayout();
             this.card14.SuspendLayout();
@@ -120,18 +120,18 @@ namespace Task1_GUI
             this.textBox2.Size = new System.Drawing.Size(130, 179);
             this.textBox2.TabIndex = 14;
             // 
-            // button1
+            // do_btn
             // 
-            this.button1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 457);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 37);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Выполнить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.do_btn.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.do_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.do_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.do_btn.Location = new System.Drawing.Point(12, 457);
+            this.do_btn.Name = "do_btn";
+            this.do_btn.Size = new System.Drawing.Size(130, 37);
+            this.do_btn.TabIndex = 15;
+            this.do_btn.Text = "Выполнить";
+            this.do_btn.UseVisualStyleBackColor = false;
+            this.do_btn.Click += new System.EventHandler(this.do_btn_Click);
             // 
             // card11
             // 
@@ -422,25 +422,25 @@ namespace Task1_GUI
             this.resC.Size = new System.Drawing.Size(0, 46);
             this.resC.TabIndex = 46;
             // 
-            // button2
+            // clear_btn
             // 
-            this.button2.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(12, 505);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 37);
-            this.button2.TabIndex = 47;
-            this.button2.Text = "Очистить";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clear_btn.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.clear_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clear_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clear_btn.Location = new System.Drawing.Point(12, 505);
+            this.clear_btn.Name = "clear_btn";
+            this.clear_btn.Size = new System.Drawing.Size(130, 37);
+            this.clear_btn.TabIndex = 47;
+            this.clear_btn.Text = "Очистить";
+            this.clear_btn.UseVisualStyleBackColor = false;
+            this.clear_btn.Click += new System.EventHandler(this.clear_btn_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 556);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.clear_btn);
             this.Controls.Add(this.resCard);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -458,13 +458,13 @@ namespace Task1_GUI
             this.Controls.Add(this.card12);
             this.Controls.Add(this.card21);
             this.Controls.Add(this.card11);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.do_btn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "7 Red";
             this.card11.ResumeLayout(false);
             this.card11.PerformLayout();
             this.card12.ResumeLayout(false);
@@ -506,7 +506,7 @@ namespace Task1_GUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button do_btn;
         private System.Windows.Forms.Panel card11;
         private System.Windows.Forms.Panel card12;
         private System.Windows.Forms.Panel card14;
@@ -539,7 +539,7 @@ namespace Task1_GUI
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel resCard;
         private System.Windows.Forms.Label resC;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button clear_btn;
     }
 }
 
