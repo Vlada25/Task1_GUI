@@ -67,6 +67,7 @@ namespace Task1_GUI
             this.resCard = new System.Windows.Forms.Panel();
             this.resC = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.card11.SuspendLayout();
             this.card12.SuspendLayout();
             this.card14.SuspendLayout();
@@ -435,11 +436,22 @@ namespace Task1_GUI
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.ClearBtnClick);
             // 
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(152, 518);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(0, 20);
+            this.errorMessageLabel.TabIndex = 48;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 556);
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.resCard);
             this.Controls.Add(this.label4);
@@ -540,6 +552,7 @@ namespace Task1_GUI
         private System.Windows.Forms.Panel resCard;
         private System.Windows.Forms.Label resC;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
 
