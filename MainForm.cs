@@ -81,8 +81,10 @@ namespace Task1_GUI
             }
             return ind;
         }
-        public void FindHighCard(ref int highCard, ref int higherCardNumber, int combLen, List<int> nomOfCards, List<string> colors)
+        public int[] FindHighCard(int combLen, List<int> nomOfCards, List<string> colors)
         {
+            int[] arr = new int[2];
+            int highCard = nomOfCards[0], higherCardNumber = 0;
             for (int i = 1; i < combLen; i++)
             {
                 if (nomOfCards[i] > highCard)
@@ -98,6 +100,9 @@ namespace Task1_GUI
                     highCard = nomOfCards[higherCardNumber];
                 }
             }
+            arr[0] = highCard;
+            arr[1] = higherCardNumber;
+            return arr;
         }
         public void MainFunc(int combLen1, int combLen2)
         {
@@ -128,12 +133,12 @@ namespace Task1_GUI
             isDataCorrect2 = ReadData(combLen2, comb2, nomOfCards2, textBox2, colors2);
             if (isDataCorrect1 && isDataCorrect2)
             {
-                highCard1 = nomOfCards1[0];
-                higherCardNumber1 = 0;
-                FindHighCard(ref highCard1, ref higherCardNumber1, combLen1, nomOfCards1, colors1);
-                highCard2 = nomOfCards2[0];
-                higherCardNumber2 = 0;
-                FindHighCard(ref highCard2, ref higherCardNumber2, combLen2, nomOfCards2, colors2);
+                int[] arr1 = FindHighCard(combLen1, nomOfCards1, colors1);
+                int[] arr2 = FindHighCard(combLen2, nomOfCards2, colors2);
+                highCard1 = arr1[0];
+                higherCardNumber1 = arr1[1];
+                highCard2 = arr2[0];
+                higherCardNumber2 = arr2[1];
 
                 if (highCard1 > highCard2)
                 {
