@@ -13,84 +13,62 @@ namespace Task1_GUI
             InitializeComponent();
         }
 
-        bool CreateCardCombination(int combLen, List<Card> cards, TextBox textBox)
+        void CreateCardCombination(int combLen, List<Card> cards, TextBox textBox)
         {
-            bool isCombinationCorrect = true;
             for (int i = 0; i < combLen; i++)
             {
                 Card card = new Card(textBox.Lines[i + 1]);
-                isCombinationCorrect = Card.IsCardCorrect;
-                if (!isCombinationCorrect)
-                {
-                    textBox.Text = Service.ErrorMessage;
-                    textBox.ForeColor = Color.Red;
-                    break;
-                }
-                else
-                {
-                    cards.Add(card);
-                }
+                cards.Add(card);
             }
-            return isCombinationCorrect;
         }
         
         public void MainFunc(int combLen1, int combLen2)
-        {
+        { 
+            List<Card> cards1 = new List<Card>();
+            List<Card> cards2 = new List<Card>();
+            Card higherCard1, higherCard2;
+
+            CreateCardCombination(combLen1, cards1, textBox1);
+            CreateCardCombination(combLen2, cards2, textBox2);
+
+            Service.AreAnyIdenticalCards(cards1, cards2);
+
+            cards1.Sort();
+            cards2.Sort();
+
+            higherCard1 = cards1[cards1.Count - 1];
+            higherCard2 = cards2[cards2.Count - 1];
+
+            Card winnerCard = Service.FindWinCombination(higherCard1, higherCard2);
+
+            label3.Text = "Выиграла комбинация № " + Card.NumOfWinner;
+            resCard.BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(winnerCard.Color));
+            resC.Text = Convert.ToString(winnerCard.Nominal);
+
+            if (Card.NumOfWinner == 1)
+            {
+                textBox1.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                textBox2.BackColor = Color.LightGreen;
+            }
+
             Label[] labelsOnCards1 = { c11, c12, c13, c14, c15, c16, c17 };
             Label[] labelsOnCards2 = { c21, c22, c23, c24, c25, c26, c27 };
             Panel[] cardPanels1 = { card11, card12, card13, card14, card15, card16, card17 };
             Panel[] cardPanels2 = { card21, card22, card23, card24, card25, card26, card27 };
-            List<Card> cards1 = new List<Card>();
-            List<Card> cards2 = new List<Card>();
-            Card higherCard1, higherCard2;
-            bool isCombination_1_Correct, isCombination_2_Correct;
-            bool existIdenticalCards;
 
-            isCombination_1_Correct = CreateCardCombination(combLen1, cards1, textBox1);
-            isCombination_2_Correct = CreateCardCombination(combLen2, cards2, textBox2);
-
-            existIdenticalCards = Service.AreAnyIdenticalCards(cards1, cards2);
-
-            if (existIdenticalCards)
+            for (int i = 0; i < combLen1; i++)
             {
-                textBox1.Text = Service.ErrorMessage;
-                textBox1.ForeColor = Color.Red;
-                textBox2.Text = Service.ErrorMessage;
-                textBox2.ForeColor = Color.Red;
+                labelsOnCards1[i].Text = Convert.ToString(cards1[i].Nominal);
+                cardPanels1[i].BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(cards1[i].Color));
             }
-            if (isCombination_1_Correct && isCombination_2_Correct && !existIdenticalCards)
+            for (int i = 0; i < combLen2; i++)
             {
-                cards1.Sort();
-                cards2.Sort();
-
-                higherCard1 = cards1[cards1.Count - 1];
-                higherCard2 = cards1[cards2.Count - 1];
-
-                Service.FindWinCombination(higherCard1, higherCard2, cards1, cards2);
-
-                label3.Text = "Выиграла комбинация № " + Service.WinCombination.NumOfWinner;
-                resCard.BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(Service.WinCombination.WinnerCard.Color));
-                resC.Text = Convert.ToString(Service.WinCombination.WinnerCard.Nominal);
-                if (Service.WinCombination.NumOfWinner == 1)
-                {
-                    textBox1.BackColor = Color.LightGreen;
-                } 
-                else
-                {
-                    textBox2.BackColor = Color.LightGreen;
-                }
-                for (int i = 0; i < combLen1; i++)
-                {
-                    labelsOnCards1[i].Text = Convert.ToString(cards1[i].Nominal);
-                    cardPanels1[i].BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(cards1[i].Color));
-                }
-                for (int i = 0; i < combLen2; i++)
-                {
-                    labelsOnCards2[i].Text = Convert.ToString(cards2[i].Nominal);
-                    cardPanels2[i].BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(cards2[i].Color));
-                }
+                labelsOnCards2[i].Text = Convert.ToString(cards2[i].Nominal);
+                cardPanels2[i].BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(cards2[i].Color));
             }
-
         }
 
         private void DoBtnClick(object sender, EventArgs e)
@@ -138,8 +116,7 @@ namespace Task1_GUI
             }
             catch(Exception error)
             {
-                errorMessageLabel.Text = "Error: an empty string was found instead of the expected value!";
-                Console.WriteLine(error.Message);
+                errorMessageLabel.Text = "Error: " + error.Message;
             }
         }
 

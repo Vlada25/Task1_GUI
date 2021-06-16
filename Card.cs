@@ -5,13 +5,16 @@ namespace Task1_GUI
 {
     internal class Card : IComparable
     {
-        public int Nominal { get; set; }
-        public Colors.SevenColors Color { get; set; }
-        public static bool IsCardCorrect { get; set; }
-        public Card() { }
+        private int setterNominal;
+        private Colors.SevenColors setterColor;
+        public int Nominal { get; }
+        public Colors.SevenColors Color { get; }
+        public static int NumOfWinner { get; set; }
         public Card(string combination)
         {
-            IsCardCorrect = CheckEnteredCombination(combination);
+            CheckEnteredCombination(combination);
+            Nominal = setterNominal;
+            Color = setterColor;
         }
         public bool Equals(Card card)
         {
@@ -21,35 +24,23 @@ namespace Task1_GUI
         {
             return (Nominal + " " + Color);
         }
-        private bool CheckEnteredCombination(string combination)
+        private void CheckEnteredCombination(string combination)
         {
-            bool isDataCorrect = true;
             const int nominalPosition = 0, colorPosition = 2;
-            bool isCardNominalCorrect = int.TryParse(Convert.ToString(combination[nominalPosition]), out int enteredNominal);
-            if (!isCardNominalCorrect)
+            int enteredNominal = Convert.ToInt32(combination[nominalPosition]) - 48;
+            if (enteredNominal > 7 || enteredNominal < 1)
             {
-                Service.ErrorMessage = "\nInvalid value of card nominal!";
-                isDataCorrect = false;
+                throw new Exception("Card nominal should be in the range [1, 7]!");
             }
             else
             {
-                if (enteredNominal > 7 || enteredNominal < 1)
+                if (!Enum.TryParse(Convert.ToString(combination[colorPosition]), out Colors.SevenColors color))
                 {
-                    Service.ErrorMessage = "\nCard nominal should be in the range [1, 7]!";
-                    isDataCorrect = false;
+                    throw new Exception("One of the colors does not exist");
                 }
-                else
-                {
-                    if (!Enum.TryParse(Convert.ToString(combination[colorPosition]), out Colors.SevenColors color))
-                    {
-                        Service.ErrorMessage = "Invalid value of color";
-                        isDataCorrect = false;
-                    }
-                    Nominal = enteredNominal;
-                    Color = color;
-                }
+                setterNominal = enteredNominal;
+                setterColor = color;
             }
-            return isDataCorrect;
         }
         public int CompareTo(object obj)
         {
