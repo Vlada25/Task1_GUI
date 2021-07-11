@@ -7,7 +7,7 @@ namespace Task1_GUI
     {
         public static string ErrorMessage { get; set; }
 
-        public static void AreAnyIdenticalCards(List<Card> cards1, List<Card> cards2)
+        public static bool AreAnyIdenticalCards(List<Card> cards1, List<Card> cards2)
         {
             for (int i = 0; i < cards1.Count; i++)
             {
@@ -15,10 +15,11 @@ namespace Task1_GUI
                 {
                     if (cards1[i].Equals(cards2[j]))
                     {
-                        throw new Exception("There can be no identical cards");
+                        return true;
                     }
                 }
             }
+            return false;
         }
 
         public static Card FindWinCombination(Card higherCard1, Card higherCard2)

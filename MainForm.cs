@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-
+using System.Linq;
 namespace Task1_GUI
 {
     public partial class MainForm : Form
@@ -31,13 +31,16 @@ namespace Task1_GUI
             CreateCardCombination(combLen1, cards1, textBox1);
             CreateCardCombination(combLen2, cards2, textBox2);
 
-            Service.AreAnyIdenticalCards(cards1, cards2);
+            if(Service.AreAnyIdenticalCards(cards1, cards2))
+            {
+                throw new Exception("There can be no identical cards");
+            }
 
             cards1.Sort();
             cards2.Sort();
 
-            higherCard1 = cards1[cards1.Count - 1];
-            higherCard2 = cards2[cards2.Count - 1];
+            higherCard1 = cards1.Last();
+            higherCard2 = cards2.Last();
 
             Card winnerCard = Service.FindWinCombination(higherCard1, higherCard2);
 

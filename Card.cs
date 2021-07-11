@@ -1,20 +1,21 @@
 ﻿using EnumColors;
 using System;
+using static EnumColors.Colors;
 
 namespace Task1_GUI
 {
-    internal class Card : IComparable
+    class Card : IComparable
     {
-        private int setterNominal;
-        private Colors.SevenColors setterColor;
         public int Nominal { get; }
-        public Colors.SevenColors Color { get; }
+        public SevenColors Color { get; }
         public static int NumOfWinner { get; set; }
         public Card(string combination)
         {
-            CheckEnteredCombination(combination);
-            Nominal = setterNominal;
-            Color = setterColor;
+            const int nominalPosition = 0,
+                colorPosition = 2,
+                ASCIIzeroPosition = 48;
+            Nominal = SetNominal(Convert.ToInt32(combination[nominalPosition]) - ASCIIzeroPosition);
+            Color = SetColor(Convert.ToString(combination[colorPosition]));
         }
         public bool Equals(Card card)
         {
@@ -24,23 +25,24 @@ namespace Task1_GUI
         {
             return (Nominal + " " + Color);
         }
-        private void CheckEnteredCombination(string combination)
+        private int SetNominal(int nominal)
         {
-            const int nominalPosition = 0, colorPosition = 2;
-            int enteredNominal = Convert.ToInt32(combination[nominalPosition]) - 48;
-            if (enteredNominal > 7 || enteredNominal < 1)
+            const int maxLenght = 7,
+                minLength = 1;
+            
+            if (nominal > maxLenght || nominal < minLength)
             {
                 throw new Exception("Card nominal should be in the range [1, 7]!");
             }
-            else
+            return nominal;
+        }
+        private SevenColors SetColor(string strColor)
+        {
+            if (!Enum.TryParse(strColor, out SevenColors color))
             {
-                if (!Enum.TryParse(Convert.ToString(combination[colorPosition]), out Colors.SevenColors color))
-                {
-                    throw new Exception("One of the colors does not exist");
-                }
-                setterNominal = enteredNominal;
-                setterColor = color;
+                throw new Exception("One of the colors does not exist");
             }
+            return color;
         }
         public int CompareTo(object obj)
         {

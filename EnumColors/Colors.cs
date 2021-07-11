@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EnumColors
 {
-    internal class Colors
+    class Colors
     {
         public enum SevenColors
         {
