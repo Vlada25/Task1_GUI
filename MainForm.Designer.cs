@@ -1,7 +1,7 @@
 ﻿
 namespace Task1_GUI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -67,6 +67,7 @@ namespace Task1_GUI
             this.resCard = new System.Windows.Forms.Panel();
             this.resC = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.errorMessageLabel = new System.Windows.Forms.Label();
             this.card11.SuspendLayout();
             this.card12.SuspendLayout();
             this.card14.SuspendLayout();
@@ -131,7 +132,7 @@ namespace Task1_GUI
             this.button1.TabIndex = 15;
             this.button1.Text = "Выполнить";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.DoBtnClick);
             // 
             // card11
             // 
@@ -433,13 +434,24 @@ namespace Task1_GUI
             this.button2.TabIndex = 47;
             this.button2.Text = "Очистить";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.ClearBtnClick);
             // 
-            // Form1
+            // errorMessageLabel
+            // 
+            this.errorMessageLabel.AutoSize = true;
+            this.errorMessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.errorMessageLabel.ForeColor = System.Drawing.Color.Red;
+            this.errorMessageLabel.Location = new System.Drawing.Point(152, 518);
+            this.errorMessageLabel.Name = "errorMessageLabel";
+            this.errorMessageLabel.Size = new System.Drawing.Size(0, 20);
+            this.errorMessageLabel.TabIndex = 48;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 556);
+            this.Controls.Add(this.errorMessageLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.resCard);
             this.Controls.Add(this.label4);
@@ -463,8 +475,8 @@ namespace Task1_GUI
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "7 Red";
             this.card11.ResumeLayout(false);
             this.card11.PerformLayout();
             this.card12.ResumeLayout(false);
@@ -540,6 +552,7 @@ namespace Task1_GUI
         private System.Windows.Forms.Panel resCard;
         private System.Windows.Forms.Label resC;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label errorMessageLabel;
     }
 }
 
