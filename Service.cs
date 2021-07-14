@@ -22,21 +22,31 @@ namespace Task1_GUI
             return false;
         }
 
-        public static Card FindWinCombination(Card higherCard1, Card higherCard2)
+        public static Card FindWinCard(Card higherCard1, Card higherCard2)
         {
             Card card;
             int flag = higherCard1.CompareTo(higherCard2);
             if (flag == 1)
             {
                 card = higherCard1;
-                Card.NumOfWinner = 1;
             }
             else
             {
                 card = higherCard2;
-                Card.NumOfWinner = 2;
             }
             return card;
+        }
+        public static int GetNumOfWinnerCombination(Card higherCard1, Card higherCard2)
+        {
+            int flag = higherCard1.CompareTo(higherCard2);
+            if (flag == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
     }
 }

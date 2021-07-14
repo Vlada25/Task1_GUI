@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
+
 namespace Task1_GUI
 {
     public partial class MainForm : Form
@@ -42,13 +43,14 @@ namespace Task1_GUI
             higherCard1 = cards1.Last();
             higherCard2 = cards2.Last();
 
-            Card winnerCard = Service.FindWinCombination(higherCard1, higherCard2);
+            Card winnerCard = Service.FindWinCard(higherCard1, higherCard2);
+            int numOfWinnerCombination = Service.GetNumOfWinnerCombination(higherCard1, higherCard2);
 
-            label3.Text = "Выиграла комбинация № " + Card.NumOfWinner;
+            label3.Text = "Выиграла комбинация № " + numOfWinnerCombination;
             resCard.BackColor = ColorTranslator.FromHtml(Colors.GetDisplayName(winnerCard.Color));
             resC.Text = Convert.ToString(winnerCard.Nominal);
 
-            if (Card.NumOfWinner == 1)
+            if (numOfWinnerCombination == 1)
             {
                 textBox1.BackColor = Color.LightGreen;
             }

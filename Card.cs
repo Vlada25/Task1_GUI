@@ -8,7 +8,6 @@ namespace Task1_GUI
     {
         public int Nominal { get; }
         public SevenColors Color { get; }
-        public static int NumOfWinner { get; set; }
         public Card(string combination)
         {
             const int nominalPosition = 0,
